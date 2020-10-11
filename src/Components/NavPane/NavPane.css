@@ -1,0 +1,15 @@
+.nav-desktop {
+  width: 100%;
+  background-color: white;
+  box-shadow: 2px 2px 24px rgba(125,125,125,0.2);
+  margin-bottom: 24px;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+}
+
+.nav-mobile {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
