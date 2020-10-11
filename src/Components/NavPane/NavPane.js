@@ -1,17 +1,21 @@
 import React from 'react';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
 import AntTabs from './AntTabs';
 import AntTab from './AntTab';
-import {useWindowSize} from "../../Hooks/UseWindowSize";
+import { useWindowSize } from "../../Hooks/UseWindowSize";
+import { useHistory } from 'react-router-dom';
+import { ROUTE_DIRECTORY } from '../../Constants/RouteDirectory';
 import './NavPane.css';
 
 const NavPane = () => {
+  let history = useHistory();
   const { width } = useWindowSize();
   const [value, setValue] = React.useState(0);
+  console.log(history);
 
   const handleChange = (event, newValue) => {
+    history.push({
+      pathname: ROUTE_DIRECTORY[newValue].pathname
+    });
     setValue(newValue);
   };
 
@@ -22,9 +26,11 @@ const NavPane = () => {
         onChange={handleChange}
         aria-label='ant example'
       >
-        <AntTab label="Menu 1" />
-        <AntTab label="Menu 2" />
-        <AntTab label="Menu 3" />
+        {
+          ROUTE_DIRECTORY.map((route) => (
+            <AntTab label={route.title} />
+          ))
+        }
       </AntTabs>
     </div>
   );
@@ -39,9 +45,11 @@ const NavPane = () => {
         textColor='secondary'
         aria-label='icon label tabs example'
       >
-        <AntTab icon={<PhoneIcon />} label="Menu 1" />
-        <AntTab icon={<FavoriteIcon />} label="Menu 2" />
-        <AntTab icon={<PersonPinIcon />} label="Menu 3" />
+        {
+          ROUTE_DIRECTORY.map((route) => (
+            <AntTab icon={route.icon} label={route.title} />
+          ))
+        }
       </AntTabs>
     </div>
   );
