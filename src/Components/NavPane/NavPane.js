@@ -10,7 +10,6 @@ const NavPane = () => {
   let history = useHistory();
   const { width } = useWindowSize();
   const [value, setValue] = React.useState(0);
-  console.log(history);
 
   const handleChange = (event, newValue) => {
     history.push({

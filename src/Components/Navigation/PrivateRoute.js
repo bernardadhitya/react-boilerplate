@@ -8,8 +8,6 @@ const isLogin = () => {
 }
 
 const renderAuthorizedComponent = (AuthorizedComponent, props, enableNavPane) => {
-  console.log('AuthorizedComponent:', AuthorizedComponent);
-  console.log('enableNavPane', enableNavPane);
   return (
     <div className='component-wrapper'>
       { enableNavPane && <NavPane />}
